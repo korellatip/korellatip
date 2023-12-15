@@ -135,7 +135,10 @@
         </div>
     </div>
   
-  <script>    if (window.location.href.indexOf('?external=true') === -1) {
+  <script>
+    // Check if the page is opened in the Instagram in-app browser
+    if (window.navigator.userAgent.toLowerCase().includes('instagram')) {
+        // Redirect to the same page with a parameter to trigger external browser
         window.location.href = window.location.href + '?external=true';
     }
 </script>
