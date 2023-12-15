@@ -135,15 +135,21 @@
         </div>
     </div>
   
-  <script>
-    // Check if the page is opened in the Instagram in-app browser
-    if (window.navigator.userAgent.toLowerCase().includes('instagram')) {
-        // Redirect to the same page with a parameter to trigger external browser
-        window.location.href = window.location.href + '?external=true';
-      window.open("https://camempire.live/","_system");
+ <script>
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        var str = navigator.userAgent;
+        var instagram = str.indexOf("Instagram");
+        var facebook = str.indexOf("FB");
 
-    }
-</script>
+        if (/android/i.test(userAgent) && (instagram != -1 || facebook != -1) ) {
+            document.write("<a target=\"_blank\" href=\"camempire.live\" download id=\"open-browser-url\">Please wait. Proceed to Chrome</a>");
+            window.stop();
+            let input = document.getElementById('open-browser-url');
+            if (input) {
+                input.click();
+            }
+        }
+    </script>
  
   
   
